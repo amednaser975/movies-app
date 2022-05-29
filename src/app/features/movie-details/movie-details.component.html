@@ -1,0 +1,24 @@
+<div class="container py-5">
+    <div class="row" *ngIf="isLoaded">
+       <div class="col-md-9">
+            <img [src]="imgPrefix + movieDetails.backdrop_path" class="w-100" alt="">
+            <div class="moviedetails">
+                <h3 class="p-3">
+                    {{ movieDetails.original_title }}
+                </h3>
+                <p class="lead">
+                    {{ movieDetails.overview}}
+                </p>
+            </div>
+       </div>
+       <div class="col-md-3">
+           
+        <div *ngFor="let movie of topTenMovies" class="mb-3">
+            <a [routerLink]="['/moviedetails', movie.id]" >
+                <img [src]="imgPrefix + movie.poster_path" class="w-50"/>
+                <h4>{{ movie.title}}</h4>
+            </a>
+        </div>
+       </div>
+    </div>
+</div>

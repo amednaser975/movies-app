@@ -1,0 +1,37 @@
+
+<nav>
+    
+    <div class="container">
+    <div class="row pt-4">
+            <div class="col-md-2">
+                LOGO
+            </div>
+            <div class="col-md-8">
+                <ul class="list-unstyled d-flex justify-content-around">
+                    <li>
+                        <a *ngIf="isLogin" [routerLink]="'/home'">Home</a>
+                    </li>
+                    <li>
+                        <a *ngIf="isLogin" [routerLink]="">About</a>
+                    </li>
+                    <li>
+                        <a *ngIf="isLogin" [routerLink]="">Movies</a>
+                    </li>
+                    <li>
+                        <a *ngIf="isLogin" [routerLink]="">TVs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul class="list-unstyled d-flex justify-content-around">
+                    <li>
+                        <a *ngIf="!isLogin" routerLink="/register">Register</a>
+                    </li>
+                    <li>
+                        <a *ngIf="!(isLogin)" routerLink="/login">LogIn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

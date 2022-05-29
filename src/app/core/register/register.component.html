@@ -1,0 +1,98 @@
+<div class="container py-5">
+    <div *ngIf="err" class="alert alert-danger m-2 w-60">
+        {{ err }}
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="w-60">
+        
+        <div class="form-group">
+            <label for="">First Name:</label>
+            <input formControlName="first_name" type="text" [ngClass]="{'is-valid': registerForm.get('first_name').valid, 'is-invalid': registerForm.get('first_name').invalid && registerForm.get('first_name').touched }" class="form-control" placeholder="" aria-describedby="helpId">
+            <span *ngIf="registerForm.get('first_name').invalid && 
+                        registerForm.get('first_name').touched && 
+                        registerForm.get('first_name').errors['required']" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                    First Name is Required
+            </span>
+            <span *ngIf="registerForm.get('first_name').invalid && 
+                        registerForm.get('first_name').touched && 
+                        registerForm.get('first_name').errors['minlength']" 
+                class="d-block m-0 p-2 text-danger bgFont">
+                    MinLength must be {{ registerForm.get('first_name').errors['minlength']['requiredLength'] }}
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="">Last Name:</label>
+            <input formControlName="last_name" type="text" [ngClass]="{'is-valid': registerForm.get('last_name').valid, 'is-invalid': registerForm.get('last_name').invalid && registerForm.get('last_name').touched }" class="form-control" placeholder="" aria-describedby="helpId">
+            <span *ngIf="registerForm.get('last_name').invalid && 
+                        registerForm.get('last_name').touched && 
+                        registerForm.get('last_name').errors['required']" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                    Last Name is Required
+            </span>
+            <span *ngIf="registerForm.get('last_name').invalid && 
+                        registerForm.get('last_name').touched && 
+                        registerForm.get('last_name').errors['minlength']" 
+                class="d-block m-0 p-2 text-danger bgFont">
+                    MinLength must be {{ registerForm.get('last_name').errors['minlength']['requiredLength'] }}
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="">Age:</label>
+            <input formControlName="age" type="number" [ngClass]="{'is-valid': registerForm.get('age').valid, 'is-invalid': registerForm.get('age').invalid && registerForm.get('age').touched }" class="form-control" placeholder="" aria-describedby="helpId">
+            <span *ngIf="registerForm.get('age').invalid && 
+                        registerForm.get('age').touched && 
+                        registerForm.get('age').errors['required']" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                    Age is Required
+            </span>
+            <span *ngIf="registerForm.get('age').invalid && 
+                        registerForm.get('age').touched && 
+                        registerForm.get('age').errors['min']" 
+                class="d-block m-0 p-2 text-danger bgFont">
+                    MinAge must be {{ registerForm.get('age').errors['min']['min'] }}
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="">E-mail:</label>
+            <input formControlName="email" type="email" [ngClass]="{'is-valid': registerForm.get('email').valid, 'is-invalid': registerForm.get('email').invalid && registerForm.get('email').touched }" class="form-control" placeholder="" aria-describedby="helpId">
+            <span *ngIf="registerForm.get('email').invalid && 
+                        registerForm.get('email').touched && 
+                        registerForm.get('email').errors['required']" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                    E-Mail is Required
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="">Password:</label>
+            <input formControlName="password" type="password" [ngClass]="{'is-valid': registerForm.get('password').valid, 'is-invalid': registerForm.get('password').invalid && registerForm.get('password').touched }" class="form-control" placeholder="" aria-describedby="helpId">
+            <span *ngIf="registerForm.get('password').invalid && 
+                        registerForm.get('password').touched && 
+                        registerForm.get('password').errors['required']" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                    Password is Required
+            </span>
+            <span *ngIf="registerForm.get('password').invalid && 
+                        registerForm.get('password').dirty" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                    Password must be like: Ahmed123
+            </span>
+        </div>
+        <!-- <div class="form-group">
+            <label for="">Confirm Password:</label>
+            <input formControlName="confirm_password" [ngClass]="{'is-valid': registerForm.get('confirm_password').valid, 'is-invalid': registerForm.get('confirm_password').invalid && registerForm.get('confirm_password').touched }" type="password" class="form-control" placeholder="" aria-describedby="helpId">
+            <span *ngIf="registerForm.get('confirm_password').invalid && 
+                        registerForm.get('confirm_password').touched && 
+                        registerForm.get('confirm_password').errors['required']" 
+                    class="d-block  m-0  p-2 text-danger bgFont">
+                Confirm Password is Required
+            </span>
+            <span *ngIf="registerForm.get('confirm_password').invalid && 
+                        registerForm.get('confirm_password').touched && 
+                        registerForm.get('confirm_password').errors['notSame']" 
+                        class="d-block  m-0  p-2 text-danger bgFont">
+                {{registerForm.get('confirm_password').errors['notSame']}}
+            </span>
+        </div> -->
+        <button [disabled]="registerForm.invalid" [ngClass]="{'disabledBtn': registerForm.invalid}"  class="btn btn-danger">Register</button>
+    </form>
+</div>
